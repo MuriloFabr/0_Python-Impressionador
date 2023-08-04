@@ -1,3 +1,8 @@
 <Home_Page>:
-    Label:
-        text: "Homepage"
+    GridLayout:
+        rows: 1
+        Label:
+            text: "Homepage"
+        Button:
+            text: "Página de Ajustes"
+            on_release: app.mudar_tela("ajustes_page")

@@ -1,7 +1,13 @@
 #:include kv/home_page.kv
+#:include kv/ajustes_page.kv
 
-ScreenManager:
-    id: screen_manager
-    Home_Page:
-        name: "home_page"
-        id: home_page
+GridLayout:
+    rows: 1
+    ScreenManager:
+        id: screen_manager
+        Home_Page:
+            name: "home_page"
+            id: home_page
+        Ajustes_Page:
+            name: "ajustes_page"
+            id: ajustes_page
