@@ -1,8 +1,17 @@
 <Home_Page>:
-    GridLayout:
-        rows: 1
+    FloatLayout:
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "icones/bg1.png"
         Label:
+            pos_hint:{"right":1, "top": 1}
+            size_hint: 1, 0.85
             text: "Homepage"
-        Button:
-            text: "Página de Ajustes"
-            on_release: app.mudar_tela("ajustes_page")
+        GridLayout:
+            pos_hint:{"right":1, "top": 0.15}
+            size_hint: 1, 0.15
+            Button:
+                text: "Página de Ajustes"
+                on_release: app.mudar_tela("ajustes_page")
