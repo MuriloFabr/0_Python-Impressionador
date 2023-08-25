@@ -38,15 +38,15 @@
                     size: self.size
                     pos: self.pos
 
-            # Botão 1 - Adicionar Vendas
+            # Botão 1 - Adicionar Venda
             ImageButton:
                 source: "icones/add.png"
-                on_release: print("app.mudar_tela(adicionar_venda)")
+                on_release: app.mudar_tela("adicionar_venda_page")
 
             # Botão 2 - Listagem de Vendedores
             ImageButton:
                 source: "icones/salesman.png"
-                on_release: print("app.mudar_tela(lista_vendedores)")
+                on_release: app.mudar_tela("lista_vendedores_page")
 
             # Botão 3 - Página Ajustes
             ImageButton:
