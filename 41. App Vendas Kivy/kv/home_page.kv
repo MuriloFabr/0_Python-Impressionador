@@ -5,22 +5,50 @@
                 size: self.size
                 pos: self.pos
                 source: "icones/bg1.png"
-        LabelButton:
-            pos_hint:{"right":1, "top": 1}
-            size_hint: 1, 0.85
-            text: "Estou na Homepage - ir para Ajustes"
-            on_release: app.mudar_tela("ajustes_page")
+        
+        # Total Vendas do Vendedor
+        Label:
+            canvas.before:
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+                    source: "icones/botao_fino.png"
+            pos_hint:{"right":0.85, "top": 0.95}
+            size_hint: 0.7, 0.2
+            bold: True
+            text: "Total de Vendas: R$1,00"
+            id: label_total_vendas
+            markup: True
+        
+        # Listagem de Vendas
+        ScrollView:
+            pos_hint:{"right":1, "top": 0.75}
+            size_hint: 1, 0.63
+
+        # barra inferior
         GridLayout:
-            pos_hint:{"right":1, "top": 0.15}
-            size_hint: 1, 0.15
+            pos_hint:{"right":1, "top": 0.12}
+            size_hint: 1, 0.12
             rows: 1
 
-            # Botão 1
-            Button:
-                text: "Página de Ajustes"
-                on_release: app.mudar_tela("ajustes_page")
+            canvas:
+                Color:
+                    rgb: utils.get_color_from_hex("#006D7E")
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
 
-            # Botão 2
-            Button:
-                text: "Página de Ajustes"
+            # Botão 1 - Adicionar Vendas
+            ImageButton:
+                source: "icones/add.png"
+                on_release: print("app.mudar_tela(adicionar_venda)")
+
+            # Botão 2 - Listagem de Vendedores
+            ImageButton:
+                source: "icones/salesman.png"
+                on_release: print("app.mudar_tela(lista_vendedores)")
+
+            # Botão 3 - Página Ajustes
+            ImageButton:
+                source: "icones/settings.png"
                 on_release: app.mudar_tela("ajustes_page")
