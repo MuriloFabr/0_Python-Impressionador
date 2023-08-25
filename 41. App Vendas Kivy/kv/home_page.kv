@@ -13,6 +13,14 @@
         GridLayout:
             pos_hint:{"right":1, "top": 0.15}
             size_hint: 1, 0.15
+            rows: 1
+
+            # Botão 1
+            Button:
+                text: "Página de Ajustes"
+                on_release: app.mudar_tela("ajustes_page")
+
+            # Botão 2
             Button:
                 text: "Página de Ajustes"
                 on_release: app.mudar_tela("ajustes_page")
