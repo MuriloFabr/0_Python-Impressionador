@@ -10,7 +10,7 @@ import requests
 GUI = Builder.load_file("main.kv")
 
 class MainApp(App):
-    id_usuario = 1
+    id_usuario = 1 #definindo manualmente o usuário, sem estar fazendo tela de login ainda
 
     def build(self):
         return GUI
@@ -23,8 +23,12 @@ class MainApp(App):
         requisicao = requests.get(f"https://hashtag-app-vendas-default-rtdb.firebaseio.com/{self.id_usuario}.json") #olhar módulo de Orientação a objetos para entender porque chamar a variável com o self
         #print(requisicao.json()) #aqui está puxando apenas o dicionário do usuário pretendido
         requisicao_dic = requisicao.json()
-        avatar = requisicao_dic['avatar']
+        #print(requisicao_dic)
+        avatar = requisicao_dic["avatar"]
         #print(avatar)
+        #print(self.root.ids) #todos os ids que existem no nosso arquivo main do programa
+        foto_superior = self.root.ids["foto_superior"]
+        foto_superior.source = f"icones/fotos_perfil/{avatar}"
     
 
     def mudar_tela(self,id_tela):
