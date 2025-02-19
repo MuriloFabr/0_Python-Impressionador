@@ -5,6 +5,7 @@ from telas import *
 from botoes import *
 from funcoes import *
 import requests
+from bannervenda import BannerVenda
 
 
 #FUNÇÃO PRINCIPAL QUE RODA O APP
