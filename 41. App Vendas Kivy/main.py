@@ -3,7 +3,6 @@ from kivy.app import App
 from kivy.lang import Builder
 from telas import *
 from botoes import *
-from funcoes import *
 import requests
 from bannervenda import BannerVenda
 
