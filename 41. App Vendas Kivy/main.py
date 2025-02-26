@@ -6,6 +6,7 @@ from botoes import *
 import requests
 from bannervenda import BannerVenda
 import os
+from functools import partial
 
 
 #FUNÇÃO PRINCIPAL QUE RODA O APP
@@ -26,7 +27,7 @@ class MainApp(App):
         lista_fotos = pagina_fotoperfil.ids["lista_fotos_perfil"]
         for foto in arquivos:
             #print(foto)
-            imagem = ImageButton(source=f"icones/fotos_perfil/{foto}", on_release=self.mudar_foto_perfil)
+            imagem = ImageButton(source=f"icones/fotos_perfil/{foto}", on_release=partial(self.mudar_foto_perfil, foto))
             lista_fotos.add_widget(imagem)
 
         # Carregar as infos do usuário
@@ -38,7 +39,7 @@ class MainApp(App):
         #requisicao = requests.get("https://hashtag-app-vendas-default-rtdb.firebaseio.com/.json") #sempre colocar .json no final do link
         #print(requisicao.json()) #essencialmente a requisição vira um arquivo .json do python. Aqui está puxando o banco inteiro ainda
         requisicao = requests.get(f"https://hashtag-app-vendas-default-rtdb.firebaseio.com/{self.id_usuario}.json") #olhar módulo de Orientação a objetos para entender porque chamar a variável com o self
-        #print(requisicao.json()) #aqui está puxando apenas o dicionário do usuário pretendido
+        #print(requisicao.json  ()) #aqui está puxando apenas o dicionário do usuário pretendido
         requisicao_dic = requisicao.json()
         #print(requisicao_dic)
 
@@ -72,8 +73,16 @@ class MainApp(App):
         gerenciador_telas.current = id_tela
 
 
-    def mudar_foto_perfil(Self, *args):
-        print("teste")
+    def mudar_foto_perfil(self, foto, *args):
+        #print("teste")
+        foto_superior = self.root.ids["foto_superior"]
+        foto_superior.source = f"icones/fotos_perfil/{foto}"
+ 
+        #atualizando o banco de dados com a nova foto de perfil
+        info = f'{{"avatar":"{foto}" }}'
+        requisicao = requests.patch(f"https://hashtag-app-vendas-default-rtdb.firebaseio.com/{self.id_usuario}.json", data=info)
+
+        self.mudar_tela("ajustes_page")
 
     
 MainApp().run()
