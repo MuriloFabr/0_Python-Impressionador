@@ -1,3 +1,4 @@
+#:include kv/login_page.kv
 #:include kv/home_page.kv
 #:include kv/ajustes_page.kv
 #:include kv/adicionar_venda_page.kv
@@ -23,6 +24,9 @@ FloatLayout:
         pos_hint:{"right":1, "top": 0.7}
         size_hint: 1, 0.7
         id: screen_manager
+        Login_Page:
+            name: "login_page"
+            id: login_page
         Home_Page:
             name: "home_page"
             id: home_page

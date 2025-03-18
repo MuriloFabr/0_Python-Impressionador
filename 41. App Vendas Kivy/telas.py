@@ -1,6 +1,9 @@
 from kivy.uix.screenmanager import Screen
 
 #DECLARANDO TODAS AS TELAS QUE SERÃO GERENCIADAS NO APP
+class Login_Page(Screen):
+    pass
+
 class Home_Page(Screen):
     pass
 
