@@ -3,6 +3,7 @@ from kivy.app import App
 from kivy.lang import Builder
 from telas import *
 from botoes import *
+from myfirebase import MyFirebase
 import requests
 from bannervenda import BannerVenda
 import os
@@ -16,6 +17,7 @@ class MainApp(App):
     id_usuario = 1 #definindo manualmente o usuário, sem estar fazendo tela de login ainda
 
     def build(self):
+        self.firebase = MyFirebase()
         return GUI
     
 
